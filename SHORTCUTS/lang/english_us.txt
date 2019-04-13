@@ -1,0 +1,29 @@
+--Texts (only text in " ")
+
+--script.lua
+STRINGS_TITLE =				"SHORTCUTS ENHANCER"
+STRINGS_EMPTY =				"Empty"
+STRINGS_HELP =				"SELECT/DOUBLE TAP HERE for help"
+
+STRINGS_DEFAULT =			"Default"
+STRINGS_ICON0 =				"Icon0"
+STRINGS_STARTUP =			"Startup"
+STRINGS_CUSTOM =			"Custom"
+STRINGS_BKG =				"Bkg"
+
+STRINGS_WAIT_PREVIEW =		"Saving Preview"
+STRINGS_READY_PREVIEW =		"OK"
+STRINGS_DONE =				"Done!!!"
+
+STRINGS_REBOOT =			"RESTART NOW ??"
+STRINGS_SYSTEM_DIALOG =		"System Message"
+STRINGS_WAIT =				"Please wait..."
+
+--Dialog Help
+STRINGS_HELP_CONTROLS =		"Controls"
+STRINGS_HELP_SQUARE =		"Icon0/Startup/Custom Image"
+STRINGS_HELP_LR=			"L/R Switch Shortcut preview or Touch each preview"
+STRINGS_HELP_LEFTRIGHT=		"<-/-> Change preview Bkg"
+STRINGS_HELP_CONFIRM =		"Set selected preview"
+STRINGS_HELP_TRIANGLE =		"Set all 3 previews"
+STRINGS_HELP_START =		"START Go back to Livearea"

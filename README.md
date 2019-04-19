@@ -13,6 +13,10 @@ When creating the preview images, you can choose between a bunch of colorfull ba
 
 ![header](SCREENSHOT/intro2.png)
 
+### Changelog 1.01 ###
+- Whatsnew.xml links fixed, ONEmenu was linked instead of Vitashell by default.<br>
+- Whatsnew.xml read/write issue fixed.<br>
+
 ## Controls are as follows: ##
 
 The front touch pad is enabled in this app for some functions :)

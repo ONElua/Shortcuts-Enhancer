@@ -146,11 +146,11 @@ function parsexml(path)
 				value = value:match('?titleid=(.+)')
 			end
 
-			PREVIEWS[i].id = value
-			PREVIEWS[i].title = value
-			PREVIEWS[i].id = value
+			PREVIEWS[i].id = value or names[i]
+			PREVIEWS[i].title = value or names[i]
+			PREVIEWS[i].id = value or names[i]
 
-			tb_xml[linesXML[i].id] = tb_xml[linesXML[i].id]:gsub('=(%w+)',"="..value)
+			tb_xml[linesXML[i].id] = tb_xml[linesXML[i].id]:gsub('=(%w+)',"="..PREVIEWS[i].id)
 		end
 	end
 

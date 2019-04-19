@@ -1,9 +1,5 @@
 --[[ 
-	----------Trophy Manager------------
-	Create and organize your direct adrenaline bubbles.
-	
-	Licensed by GNU General Public License v3.0
-	
+	Shortcuts Enhancer
 	Designed By:
 	- Gdljjrod (https://twitter.com/gdljjrod).
 ]]

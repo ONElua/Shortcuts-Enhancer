@@ -1,4 +1,5 @@
 --[[ 
+	Shortcuts Enhancer
 	Designed By:
 	- Gdljjrod (https://twitter.com/gdljjrod).
 ]]

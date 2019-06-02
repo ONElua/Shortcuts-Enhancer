@@ -22,7 +22,9 @@ dofile("git/updater.lua")
 local objxml = xml.parsefile("ur0:shell/whats_new/np/whatsnew.xml")
 if objxml then
 	local var = objxml:find("target","type", "p")
-	if var and var.value then files.copy("np/whatsnew.xml","ur0:shell/whats_new/np/") end
+	if var and var.value then files.copy("np/whatsnew.xml","ur0:shell/whats_new/np/")end
+	local var = objxml:find("target","type", "c")
+	if var and var.value then files.copy("np/whatsnew.xml","ur0:shell/whats_new/np/")end
 end
 
 --Resize del icon de cada app

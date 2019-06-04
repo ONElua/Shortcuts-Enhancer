@@ -13,6 +13,10 @@ When creating the preview images, you can choose between a bunch of colorfull ba
 
 ![header](SCREENSHOT/intro2.png)
 
+### Changelog 2.00 ###
+- Added compatibility with new official XML (blue icons).<br>
+- Added option to restore official XML (press and hold L&R).<br>
+
 ### Changelog 1.01 ###
 - Whatsnew.xml links fixed, ONEmenu was linked instead of Vitashell by default.<br>
 - Whatsnew.xml read/write issue fixed.<br>

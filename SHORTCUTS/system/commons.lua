@@ -206,6 +206,7 @@ function show_dialog()
 os.dialog(  "     "..SYMBOL_SQUARE.." "..STRINGS_HELP_SQUARE..
 			"\n\n".."     "..STRINGS_HELP_LR..
 			"\n\n".."     "..STRINGS_HELP_LEFTRIGHT..
+			"\n\n".."     "..STRINGS_HELP_HELD_LR..
 			"\n\n".."     "..SYMBOL_CONFIRM.." "..STRINGS_HELP_CONFIRM..
 			"\n\n".."     "..SYMBOL_TRIANGLE.." "..STRINGS_HELP_TRIANGLE..
 			"\n\n".."     "..STRINGS_HELP_START,

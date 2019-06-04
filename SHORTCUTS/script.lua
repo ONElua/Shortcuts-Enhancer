@@ -6,11 +6,11 @@
 
 game.close()
 
---Show splash
-splash.zoom("resources/splash.png")
-
 --Load palette
 color.loadpalette()
+
+--Show splash
+splash.zoom("resources/splash.png")
 
 back = image.load("resources/back.png")
 
@@ -22,9 +22,23 @@ dofile("git/updater.lua")
 local objxml = xml.parsefile("ur0:shell/whats_new/np/whatsnew.xml")
 if objxml then
 	local var = objxml:find("target","type", "p")
-	if var and var.value then files.copy("np/whatsnew.xml","ur0:shell/whats_new/np/")end
+	if var and var.value then
+		files.delete("ur0:shell/whats_new/np/whatsnew_old.xml")
+		files.rename("ur0:shell/whats_new/np/whatsnew.xml","whatsnew_old.xml")
+		change = true
+	end
 	local var = objxml:find("target","type", "c")
-	if var and var.value then files.copy("np/whatsnew.xml","ur0:shell/whats_new/np/")end
+	if var and var.value then
+		files.delete("ur0:shell/whats_new/np/whatsnew_new.xml")
+		files.rename("ur0:shell/whats_new/np/whatsnew.xml","whatsnew_new.xml")
+		change = true
+	end
+	if change then
+		files.copy("np/whatsnew.xml","ur0:shell/whats_new/np/")
+		for i=1,3 do
+			files.delete("ur0:shell/whats_new/np/img/SHORTCUT00"..i..".png")
+		end
+	end
 end
 
 --Resize del icon de cada app
@@ -67,7 +81,6 @@ end
 
 local coords, yp = { 35, 339, 641 }, 348
 buttons.interval(12,5)
-change = false
 local crono, clicked = timer.new(), false
 while true do
 	buttons.read()
@@ -107,9 +120,10 @@ while true do
 						PREVIEWS[sel].def = false
 
 						if PREVIEWS[sel].icono == 1 then
+							local _title = string.upper(APPS[scroll_apps.sel].title) or "UNK"
 							if APPS[scroll_apps.sel].type == "EG" or APPS[scroll_apps.sel].type == "ME" then
-								if string.upper(APPS[scroll_apps.sel].title) == "VHBL" then
-									PREVIEWS[sel].img = game.geticon0(APPS[scroll_apps.sel].path.."/PBOOT.PBP")
+								if _title == "VHBL" or _title == "TRINITY" or _title == "ARK" then
+									PREVIEWS[sel].img = game.geticon0(APPS[scroll_apps.sel].path.."/PBOOT.PBP") or game.geticon0(APPS[scroll_apps.sel].path.."/EBOOT.PBP")
 								else
 									PREVIEWS[sel].img = game.geticon0(APPS[scroll_apps.sel].path.."/EBOOT.PBP")
 								end
@@ -286,9 +300,9 @@ while true do
 
 				write_xml(XMLPATH,sel,PREVIEWS[sel].id)
 				files.write(XMLPATH,tb_xml)
-
-				os.dialog(STRINGS_DONE)
 				os.delay(500)
+
+				os.message(STRINGS_DONE)
 				change = true
 			end
 		end
@@ -315,11 +329,42 @@ while true do
 			end
 			if flag then
 				files.write(XMLPATH,tb_xml)
-				--os.message(STRINGS_DONE)
-				os.dialog(STRINGS_DONE)
 				os.delay(500)
+
+				os.message(STRINGS_DONE)
 				change = true
 			end
+		end
+
+		if buttons.held.l and buttons.held.r then
+			local vbuff = screen.toimage()
+			if vbuff then vbuff:blit(0,0) end
+
+			--if os.dialog(STRINGS_RESTORE_QUESTION, STRINGS_SYSTEM_DIALOG, __DIALOG_MODE_OK_CANCEL) == true then
+			if os.message("\n\n"..STRINGS_RESTORE_QUESTION,1) == 1 then
+
+				files.delete("ur0:shell/whats_new/np/whatsnew.xml")
+				if files.exists("ur0:shell/whats_new/np/whatsnew_new.xml") then
+					files.rename("ur0:shell/whats_new/np/whatsnew_new.xml", "whatsnew.xml")
+					os.dialog(STRINGS_RESTORE_XML_NEW)
+				elseif files.exists("ur0:shell/whats_new/np/whatsnew_old.xml") then
+					files.rename("ur0:shell/whats_new/np/whatsnew_old.xml", "whatsnew.xml")
+					os.dialog(STRINGS_RESTORE_XML_OLD)
+				else
+					os.dialog(STRINGS_DELETE_CUSTOMXL)
+				end
+
+				for i=1,3 do
+					files.delete("ur0:shell/whats_new/np/img/SHORTCUT00"..i..".png")
+				end
+
+				os.delay(250)
+				os.message(STRINGS_REBOOT_NEED)
+
+				buttons.homepopup(1)
+				power.restart()
+			end
+
 		end
 
 		--Help
